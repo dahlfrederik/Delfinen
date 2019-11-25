@@ -36,11 +36,17 @@ Det er meningen, at I skal arbejde iterativt med design og implementering af hve
 Software (programmet)
 Koden skal som minimum indeholde:
 • Flere klasser
+
 • Logisk opdeling af relaterede klasser i packages
+
 • Relevante datastrukturer
+
 • Nedarvning og/eller interfaces
+
 • Gemme data i en database (persistens), således, at data bevares/hentes.
+
 • Simpel tekstbaseret brugergrænseflade
+
 • Relevante unit tests
 
   Aflevering
