@@ -26,6 +26,8 @@ Med udgangspunkt i casen om Svømmeklubben Delfinen skal der udarbejdes en kravs
 1. domænemodel
 2. use case diagram (over systemets funktionalitet)
 3. kort beskrivelse af use cases
+
+
 Softwaredesign
 I skal designe programmet efter objektorienterede principper med henblik på at koden er:
 o læsevenlig o genbrugbar o robust
