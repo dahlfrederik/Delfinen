@@ -4,6 +4,8 @@ import dataadmin.MemberMapper;
 import dataadmin.TeamMapper;
 import java.util.ArrayList;
 import model.Member;
+import model.Program;
+import ui.ConsoleUI;
 
 /**
  *
@@ -22,10 +24,14 @@ public class DelfinMain {
 //        //dm.deleteMember(2);
 //        memberlist = dm.getMembers(); 
 //        System.out.println(memberlist);
-        
-        TeamMapper tm = new TeamMapper(); 
-        System.out.println("Junir: " + tm.getJunior()); 
-        System.out.println("Senior" + tm.getSenior()); 
+//        
+//        TeamMapper tm = new TeamMapper(); 
+//        System.out.println("Junir: " + tm.getJunior()); 
+//        System.out.println("Senior" + tm.getSenior()); 
+
+          MemberMapper mm = new MemberMapper(); 
+          ConsoleUI ui = new ConsoleUI(); 
+          Program program = new Program(ui, mm); 
     }
      
 }

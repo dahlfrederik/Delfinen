@@ -102,4 +102,29 @@ public class MemberMapper {
         }
         return member;
     }
+     
+     public ArrayList<Member> notPaid(){
+         ArrayList<Member> notPaidList = new ArrayList(); 
+         try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.members WHERE paystatus = 'false'");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int age = rs.getInt("age"); 
+                String team = rs.getString("team"); 
+                boolean active = rs.getBoolean("active"); 
+                boolean paystatus = rs.getBoolean("paystatus"); 
+                Member member = new Member(id,name,age,team,active,paystatus);
+                notPaidList.add(member);
+            }
+            System.out.println(notPaidList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, medlemmer i restance blev ikke tilføjet");
+        }
+         
+         
+         return notPaidList; 
+     }
 }
