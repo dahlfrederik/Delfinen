@@ -112,7 +112,7 @@ public class Program {
     private void createMember() {
         System.out.println("Indtast medlem navn");
         String name = ui.getInput(); 
-        System.out.println("Indtast medlemmets nummer");
+        System.out.println("Indtast medlemmets telefon nummer");
         int nr = ui.getIntInput(); 
         System.out.println("Indtast alder");
         int age = ui.getIntInput(); 
