@@ -14,7 +14,7 @@ import model.Member;
  *
  * @author Josef, Thor, Hallur og Frederik 
  */
-public class DataMapper {
+public class MemberMapper {
        private Connection con = DatabaseConnector.getConnection();
        private Statement stmt;
     
@@ -41,7 +41,7 @@ public class DataMapper {
         }
       }
        
-       
+        
      public ArrayList<Member> getMembers() {
         ArrayList<Member> memberList = new ArrayList();
         try {

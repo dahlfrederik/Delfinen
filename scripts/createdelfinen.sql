@@ -10,6 +10,7 @@ create table members (
     primary key(id),
     UNIQUE KEY type_UNIQUE (name));
     
-    
+
+
 
 
