@@ -27,11 +27,12 @@ public class TeamMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
                 int age = rs.getInt("age"); 
                 String team = rs.getString("team"); 
                 boolean active = rs.getBoolean("active"); 
                 boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,age,team,active,paystatus);
+                Member member = new Member(id,name,nr,age,team,active,paystatus);
                 juniorList.add(member);
             }
             System.out.println(juniorList);
@@ -50,11 +51,12 @@ public class TeamMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
                 int age = rs.getInt("age"); 
                 String team = rs.getString("team"); 
                 boolean active = rs.getBoolean("active"); 
                 boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,age,team,active,paystatus);
+                Member member = new Member(id,name,nr,age,team,active,paystatus);
                 seniorList.add(member);
             }
             System.out.println(seniorList);

@@ -20,14 +20,15 @@ public class MemberMapper {
     
        public void insertMember(Member member) {
         try {
-            String SQL = "INSERT INTO members (name, age, team, active, paystatus) VALUES (?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO members (name, phonenr, age, team, active, paystatus) VALUES (?, ?, ?, ?, ?, ?)";
             con = DatabaseConnector.getConnection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,member.getName());
-            ps.setInt(2,member.getAge()); 
-            ps.setString(3, member.getTeam());
-            ps.setBoolean(4, member.isActive());
-            ps.setBoolean(5, member.isPaystatus());
+            ps.setInt(2, member.getNr());
+            ps.setInt(3,member.getAge()); 
+            ps.setString(4, member.getTeam());
+            ps.setBoolean(5, member.isActive());
+            ps.setBoolean(6, member.isPaystatus());
             ps.executeUpdate();
             
             ResultSet ids = ps.getGeneratedKeys();
@@ -51,11 +52,12 @@ public class MemberMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
                 int age = rs.getInt("age"); 
                 String team = rs.getString("team"); 
                 boolean active = rs.getBoolean("active"); 
                 boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,age,team,active,paystatus);
+                Member member = new Member(id,name,nr,age,team,active,paystatus);
                 memberList.add(member);
             }
             System.out.println(memberList);
@@ -91,11 +93,12 @@ public class MemberMapper {
             if (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
                 int age = rs.getInt("age"); 
                 String team = rs.getString("team"); 
                 boolean active = rs.getBoolean("active"); 
                 boolean paystatus = rs.getBoolean("paystatus"); 
-                member = new Member(id,name,age,team,active,paystatus);
+                member = new Member(id,name,nr,age,team,active,paystatus);
             }
         } catch (SQLException ex) {
             System.out.println("Fejl, medlem blev ikke fundet");
@@ -112,11 +115,12 @@ public class MemberMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
                 int age = rs.getInt("age"); 
                 String team = rs.getString("team"); 
                 boolean active = rs.getBoolean("active"); 
                 boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,age,team,active,paystatus);
+                Member member = new Member(id,name,nr,age,team,active,paystatus);
                 notPaidList.add(member);
             }
             System.out.println(notPaidList);

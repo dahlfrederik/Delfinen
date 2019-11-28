@@ -112,6 +112,8 @@ public class Program {
     private void createMember() {
         System.out.println("Indtast medlem navn");
         String name = ui.getInput(); 
+        System.out.println("Indtast medlemmets nummer");
+        int nr = ui.getIntInput(); 
         System.out.println("Indtast alder");
         int age = ui.getIntInput(); 
         System.out.println("Indtast hold");
@@ -120,7 +122,7 @@ public class Program {
         Boolean payStatus = ui.getBoolInput(); 
         System.out.println("Indtast medlemsstatus: true = aktiv, false =  inaktiv");
         Boolean status = ui.getBoolInput(); 
-        Member member = new Member(name,age,team,payStatus,status); 
+        Member member = new Member(name,nr,age,team,payStatus,status); 
         memberMapper.insertMember(member); 
     }
     

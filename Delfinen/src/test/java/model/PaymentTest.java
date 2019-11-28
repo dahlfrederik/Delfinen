@@ -24,7 +24,7 @@ public class PaymentTest {
 
     @Test
     public void testPaymentPrice() {
-        Member member = new Member("Frederik", 22, "Junior", true, true);
+        Member member = new Member("Frederik", 30366319,22, "Junior", true, true);
         double expResult = 1600;
         double result = p.paymentPrice(member);
         assertEquals(expResult, result, 0.0);
@@ -32,7 +32,7 @@ public class PaymentTest {
 
     @Test
     public void testPaymentPrice2() {
-        Member member = new Member("Frederik", 17, "Junior", true, true);
+        Member member = new Member("Frederik", 30366319,17, "Junior", true, true);
         double expResult = 1000;
         double result = p.paymentPrice(member);
         assertEquals(expResult, result, 0.0);
@@ -40,7 +40,7 @@ public class PaymentTest {
 
     @Test
     public void testPaymentPrice3() {
-        Member member = new Member("Frederik", 61, "Junior", true, true);
+        Member member = new Member("Frederik",30366319, 61, "Junior", true, true);
         double expResult = 1200;
         double result = p.paymentPrice(member);
         assertEquals(expResult, result, 0.0);
@@ -48,7 +48,7 @@ public class PaymentTest {
 
     @Test
     public void testPaymentPrice4() {
-        Member member = new Member("Frederik", 61, "Junior", true, false);
+        Member member = new Member("Frederik", 30366319, 61, "Junior", true, false);
         double expResult = 500;
         double result = p.paymentPrice(member);
         assertEquals(expResult, result, 0.0);
