@@ -8,12 +8,12 @@ import dataadmin.ResultMapper;
  *
  * @author FrederikDahl
  */
-public class CompetitionTime implements Results{
+public class TrainingTime implements Results {
     ResultMapper rm = new ResultMapper();
 
     @Override
     public void showResults(Result result) {
-       rm.showResultsFromSQLComp();
+       rm.showResultsFromSQLTraining();
     }
 
     @Override

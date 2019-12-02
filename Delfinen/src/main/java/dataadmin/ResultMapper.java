@@ -7,10 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import model.Member;
 import model.Result;
@@ -42,11 +38,35 @@ public class ResultMapper {
         }
     }
     
-    public ArrayList<Result> showResultsFromSQL(){
+    public ArrayList<Result> showResultsFromSQLComp(){
          ArrayList<Result> resultList = new ArrayList(); 
         try {
             stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.results");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.results WHERE comp = true");
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                int date = rs.getInt("date");
+                Boolean comp = rs.getBoolean("comp"); 
+                String disc = rs.getString("disc"); 
+                int time = rs.getInt("result");
+                
+                Result result = new Result(name,time,comp,disc, date); 
+                resultList.add(result);
+            }
+            
+            System.out.println(resultList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, resultater blev ikke tilføjet til listen");
+        }
+        return resultList; 
+    }
+    
+     public ArrayList<Result> showResultsFromSQLTraining(){
+         ArrayList<Result> resultList = new ArrayList(); 
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.results WHERE comp = false");
 
             while (rs.next()) {
                 String name = rs.getString("name");
@@ -100,7 +120,11 @@ public class ResultMapper {
         Result result2 = new Result("Josef",20,true,"200m butterfly",112020); 
         rm.insertResultToSQL(result);
         rm.insertResultToSQL(result2);
-        rm.showResultsFromSQL();
+        System.out.println("SHOW RESULT FROM COMP");
+        rm.showResultsFromSQLComp();
+        System.out.println("SHOW RESULT FROM TRAINING");
+        rm.showResultsFromSQLTraining();
+        
         rm.showResultForMember(member);
     }
 }
