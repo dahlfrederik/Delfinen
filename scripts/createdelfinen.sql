@@ -15,9 +15,11 @@ DROP TABLE if exists results;
 
 create table results ( 
     name 		varchar(30)	references members,
-    date		date, 
+    date		date,
+    comp		boolean,
+    disc		varchar(30), 
     result 		integer,
-    primary key(phonenr, name)); 
+    primary key(name)); 
     
 
 
