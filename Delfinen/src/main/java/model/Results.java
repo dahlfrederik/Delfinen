@@ -12,4 +12,6 @@ public interface Results {
     
     public void insertResult(Result result); 
     
+    public void showTop5(); 
+    
 }

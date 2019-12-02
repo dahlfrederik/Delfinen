@@ -99,11 +99,9 @@ public class Program {
     }
         
     private void accountantUI() {
-
     }
 
     private void coachUI() {
-        
     }
 
     private void createMember() {
@@ -137,5 +135,6 @@ public class Program {
         memberMapper.deleteMember(id);
         System.out.println("Medlemmet med id: " + id + " er blevet slettet");
     }
+
     
 }

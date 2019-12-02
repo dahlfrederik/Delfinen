@@ -26,4 +26,10 @@ public class CompetitionTime implements Results{
         rm.insertResultToSQL(result);
     }
 
+    @Override
+    public void showTop5() {
+    }
+    
+    
+
 }
