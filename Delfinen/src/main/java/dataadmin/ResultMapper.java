@@ -110,6 +110,56 @@ public class ResultMapper {
         }
         return result;
     }
+ 
+        public ArrayList<Result> showTop5Comp(){
+         ArrayList<Result> resultList = new ArrayList(); 
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT name AS TOP5, result AS TID FROM delfinen.results WHERE comp = true ORDER BY result ASC LIMIT 5");
+            
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                int date = rs.getInt("date");
+                Boolean comp = rs.getBoolean("comp"); 
+                String disc = rs.getString("disc"); 
+                int time = rs.getInt("result");
+                
+                Result result = new Result(name,time,comp,disc, date); 
+                resultList.add(result);
+            }
+            
+            System.out.println(resultList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, resultater blev ikke tilføjet til listen");
+        }
+        return resultList; 
+    }
+        
+    public ArrayList<Result> showTop5Training() {
+        ArrayList<Result> resultList = new ArrayList();
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT name AS TOP5, result AS TID FROM delfinen.results WHERE comp = false ORDER BY result ASC LIMIT 5");
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                int date = rs.getInt("date");
+                Boolean comp = rs.getBoolean("comp");
+                String disc = rs.getString("disc");
+                int time = rs.getInt("result");
+
+                Result result = new Result(name, time, comp, disc, date);
+                resultList.add(result);
+            }
+
+            System.out.println(resultList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, resultater blev ikke tilføjet til listen");
+        }
+        return resultList;
+    }
+
         
     
     
