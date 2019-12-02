@@ -10,6 +10,16 @@ create table members (
     paystatus		boolean, 
     primary key(id),
     UNIQUE KEY type_UNIQUE (phonenr));
+    
+DROP TABLE if exists results;
+
+create table results ( 
+	phonenr		integer references members, 
+    name 		varchar(30)	references members,
+    date		date, 
+    result 		integer,
+    primary key(phonenr, name)); 
+    
 
 
 
