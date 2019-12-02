@@ -10,11 +10,6 @@ public interface Results {
     
     public Member chooseMember(Member member); 
     
-    public void insertTime(); 
-    
-    public void insertDate(); 
-    
-    public boolean comptetion(); 
-    
+    public void insertResult(Result result); 
     
 }

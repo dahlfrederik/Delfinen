@@ -2,6 +2,8 @@
 
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author FrederikDahl
@@ -10,12 +12,17 @@ public class Result {
     private String name, disciplin;
     private boolean competition;
     private int time; 
+    private Date date; 
     
     public Result(String name, int time, Boolean competition, String disciplin){
         this.name = name;
         this.time = time;
         this.competition = competition; 
         this.disciplin = disciplin; 
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public String getDisciplin() {

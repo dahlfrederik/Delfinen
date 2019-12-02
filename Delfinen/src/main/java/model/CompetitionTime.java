@@ -2,6 +2,8 @@
 
 package model;
 
+import dataadmin.ResultMapper;
+
 /**
  *
  * @author FrederikDahl
@@ -20,16 +22,9 @@ public class CompetitionTime implements Results{
     }
 
     @Override
-    public void insertTime() {
-    }
-
-    @Override
-    public void insertDate() {
-    }
-
-    @Override
-    public boolean comptetion() {
-        return true; 
+    public void insertResult(Result result) {
+        ResultMapper rm = new ResultMapper();
+        rm.insertResultToSQL(result);
     }
 
 }
