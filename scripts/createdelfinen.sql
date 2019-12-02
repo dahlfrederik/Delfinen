@@ -18,8 +18,7 @@ create table results (
     date		date,
     comp		boolean,
     disc		varchar(30), 
-    result 		integer,
-    primary key(name)); 
+    result 		integer);  
     
 
 
