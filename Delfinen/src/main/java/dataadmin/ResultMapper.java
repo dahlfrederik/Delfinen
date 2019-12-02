@@ -111,23 +111,24 @@ public class ResultMapper {
         return result;
     }
  
-        public ArrayList<Result> showTop5Comp(){
+        public ArrayList<Result> showTop5Comp(String disciplin){
          ArrayList<Result> resultList = new ArrayList(); 
         try {
             stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT name AS TOP5, result AS TID FROM delfinen.results WHERE comp = true ORDER BY result ASC LIMIT 5");
+            String SQL = "SELECT name AS TOP5, disc,result AS TID FROM delfinen.results WHERE comp = true AND disc = ? ORDER BY result ASC LIMIT 5";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, disciplin);
+            ResultSet rs = ps.executeQuery();
             
-
             while (rs.next()) {
-                String name = rs.getString("name");
-                int date = rs.getInt("date");
-                Boolean comp = rs.getBoolean("comp"); 
+                String name = rs.getString("TOP5");
                 String disc = rs.getString("disc"); 
-                int time = rs.getInt("result");
+                int time = rs.getInt("TID");
                 
-                Result result = new Result(name,time,comp,disc, date); 
+                Result result = new Result(name,time,disc); 
                 resultList.add(result);
             }
+            System.out.println("SHOW TOP5 FROM COMP WITH DISCIPLIN: " + disciplin);
             
             System.out.println(resultList);
         } catch (SQLException ex) {
@@ -136,23 +137,24 @@ public class ResultMapper {
         return resultList; 
     }
         
-    public ArrayList<Result> showTop5Training() {
+    public ArrayList<Result> showTop5Training(String disciplin) {
         ArrayList<Result> resultList = new ArrayList();
         try {
             stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT name AS TOP5, result AS TID FROM delfinen.results WHERE comp = false ORDER BY result ASC LIMIT 5");
-
+            String SQL = "SELECT name AS TOP5, disc,result AS TID FROM delfinen.results WHERE comp = false AND disc = ? ORDER BY result ASC LIMIT 5";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, disciplin);
+            ResultSet rs = ps.executeQuery();
+            
             while (rs.next()) {
-                String name = rs.getString("name");
-                int date = rs.getInt("date");
-                Boolean comp = rs.getBoolean("comp");
-                String disc = rs.getString("disc");
-                int time = rs.getInt("result");
-
-                Result result = new Result(name, time, comp, disc, date);
+                String name = rs.getString("TOP5");
+                String disc = rs.getString("disc"); 
+                int time = rs.getInt("TID");
+                
+                Result result = new Result(name,time,disc); 
                 resultList.add(result);
             }
-
+            System.out.println("SHOW TOP5 FROM TRAINING");
             System.out.println(resultList);
         } catch (SQLException ex) {
             System.out.println("Fejl, resultater blev ikke tilføjet til listen");
@@ -161,20 +163,21 @@ public class ResultMapper {
     }
 
         
-    
-    
     public static void main(String[] args) {
         Member member = new Member("Josef", 1021232, 12, "Senior", false, false);
-        Result result = new Result("Josef",10,true,"100m butterfly", 110999); 
+        Result result = new Result("Josef",10,true,"butterfly", 110999); 
         ResultMapper rm = new ResultMapper(); 
-        Result result2 = new Result("Josef",20,true,"200m butterfly",112020); 
+        Result result2 = new Result("Thor",24,false,"butterfly",112020); 
+        Result result4 = new Result("Jos",35,false,"butterfly", 110999); 
+        Result result5 = new Result("Halu",88,false,"butterfly", 110999); 
+        Result result6 = new Result("Snuske",10,true,"butterfly", 110999); 
         rm.insertResultToSQL(result);
         rm.insertResultToSQL(result2);
-        System.out.println("SHOW RESULT FROM COMP");
-        rm.showResultsFromSQLComp();
-        System.out.println("SHOW RESULT FROM TRAINING");
-        rm.showResultsFromSQLTraining();
+        rm.insertResultToSQL(result4);
+        rm.insertResultToSQL(result5);
+        rm.insertResultToSQL(result6);
         
-        rm.showResultForMember(member);
+        rm.showTop5Training("butterfly");
+        
     }
 }

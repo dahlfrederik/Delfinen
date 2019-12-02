@@ -22,6 +22,12 @@ public class Result {
         this.date = date; 
     }
 
+    public Result(String name, int time, String disc) {
+        this.name = name;
+        this.time = time;
+        this.disciplin = disc; 
+    }
+
     public int getDate() {
         return date;
     }
@@ -64,7 +70,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result for: " + name + ", competition: " + competition + ", time: " + time + ", disciplin: "+ disciplin +"\n";
+        return "Result for: " + name + ", time: " + time + ", disciplin: "+ disciplin +"\n";
     }
 
     
