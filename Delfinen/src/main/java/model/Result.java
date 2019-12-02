@@ -7,13 +7,31 @@ package model;
  * @author FrederikDahl
  */
 public class Result {
-    private String name, competition;
+    private String name, disciplin;
+    private boolean competition;
     private int time; 
     
-    public Result(String name, int time, String competition){
+    public Result(String name, int time, Boolean competition, String disciplin){
         this.name = name;
         this.time = time;
         this.competition = competition; 
+        this.disciplin = disciplin; 
+    }
+
+    public String getDisciplin() {
+        return disciplin;
+    }
+
+    public void setDisciplin(String disciplin) {
+        this.disciplin = disciplin;
+    }
+
+    public boolean isCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(boolean competition) {
+        this.competition = competition;
     }
 
     public String getName() {
@@ -22,14 +40,6 @@ public class Result {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCompetition() {
-        return competition;
-    }
-
-    public void setCompetition(String competition) {
-        this.competition = competition;
     }
 
     public int getTime() {

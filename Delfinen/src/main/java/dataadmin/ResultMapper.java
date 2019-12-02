@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Result;
 
 /**
  *
@@ -16,17 +17,15 @@ public class ResultMapper {
     private Connection con = DatabaseConnector.getConnection();
     private Statement stmt;
     
-    public void insertTime(){
+    public void insertTime(Result result){
         try {
             String SQL = "INSERT INTO members (name, phonenr, age, team, active, paystatus) VALUES (?, ?, ?, ?, ?, ?)";
             con = DatabaseConnector.getConnection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,member.getName());
-            ps.setInt(2, member.getNr());
-            ps.setInt(3,member.getAge()); 
-            ps.setString(4, member.getTeam());
-            ps.setBoolean(5, member.isActive());
-            ps.setBoolean(6, member.isPaystatus());
+            ps.setString(1,result.getName());
+            ps.setBoolean(2, result.isCompetition());
+            ps.setString(3,result.getDisciplin()); 
+           
             ps.executeUpdate();
                         
         } catch (SQLException ex) {

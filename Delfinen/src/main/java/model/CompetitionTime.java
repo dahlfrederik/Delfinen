@@ -9,8 +9,7 @@ package model;
 public class CompetitionTime implements Results{
 
     @Override
-    public void showResults(Member member) {
-        
+    public void showResults(Result result) {
        
     }
 
@@ -30,6 +29,7 @@ public class CompetitionTime implements Results{
 
     @Override
     public boolean comptetion() {
+        return true; 
     }
 
 }

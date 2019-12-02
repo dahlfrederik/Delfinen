@@ -6,7 +6,7 @@ package model;
  */
 public interface Results {
     
-    public void showResults(Member member);
+    public void showResults(Result result);
     
     public Member chooseMember(Member member); 
     

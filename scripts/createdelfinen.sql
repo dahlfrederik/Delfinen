@@ -14,7 +14,6 @@ create table members (
 DROP TABLE if exists results;
 
 create table results ( 
-	phonenr		integer references members, 
     name 		varchar(30)	references members,
     date		date, 
     result 		integer,
