@@ -2,7 +2,7 @@
 
 package model;
 
-import java.sql.Date;
+import java.time.LocalTime;
 
 /**
  *
@@ -12,17 +12,22 @@ public class Result {
     private String name, disciplin;
     private boolean competition;
     private int time; 
-    private Date date; 
+    private int date; 
     
-    public Result(String name, int time, Boolean competition, String disciplin){
+    public Result(String name, int time, Boolean competition, String disciplin, int date){
         this.name = name;
         this.time = time;
         this.competition = competition; 
         this.disciplin = disciplin; 
+        this.date = date; 
     }
 
-    public Date getDate() {
+    public int getDate() {
         return date;
+    }
+    
+   public void setDate(int date) {
+       this.date = date;
     }
 
     public String getDisciplin() {
@@ -59,8 +64,10 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result for: " + "name: " + name + ", competition: " + competition + ", time: " + time + '}';
+        return "Result for: " + name + ", competition: " + competition + ", time: " + time + ", disciplin: "+ disciplin +"\n";
     }
+
+    
     
     
 }

@@ -4,10 +4,15 @@ package dataadmin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import model.Member;
 import model.Result;
 
 /**
@@ -25,9 +30,7 @@ public class ResultMapper {
             con = DatabaseConnector.getConnection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,result.getName());
-            LocalDateTime now = LocalDateTime.now();
-            Timestamp sqlNow = Timestamp.valueOf(now);
-            ps.setTimestamp(2,sqlNow); 
+            ps.setInt(2,result.getDate()); 
             ps.setBoolean(3, result.isCompetition());
             ps.setString(4,result.getDisciplin()); 
             ps.setInt(5,result.getTime()); 
@@ -39,11 +42,65 @@ public class ResultMapper {
         }
     }
     
+    public ArrayList<Result> showResultsFromSQL(){
+         ArrayList<Result> resultList = new ArrayList(); 
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.results");
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                int date = rs.getInt("date");
+                Boolean comp = rs.getBoolean("comp"); 
+                String disc = rs.getString("disc"); 
+                int time = rs.getInt("result");
+                
+                Result result = new Result(name,time,comp,disc, date); 
+                resultList.add(result);
+            }
+            
+            System.out.println(resultList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, resultater blev ikke tilføjet til listen");
+        }
+        return resultList; 
+    }
+    
+    public Result showResultForMember(Member member){
+        Result result = null; 
+        String name1 = member.getName(); 
+        try {
+            String SQL = "SELECT * FROM delfinen.results WHERE name = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, name1);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String name = rs.getString("name");
+                int time = rs.getInt("result");
+                boolean comp = rs.getBoolean("comp");
+                String disc = rs.getString("disc");
+                int date = rs.getInt("date");
+                
+                result =  new Result(name, time, comp, disc, date);
+            }
+            System.out.println(result);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, medlem blev ikke fundet");
+        }
+        return result;
+    }
+        
+    
+    
     public static void main(String[] args) {
-        Result result = new Result("Josef",10,true,"100m butterfly"); 
+        Member member = new Member("Josef", 1021232, 12, "Senior", false, false);
+        Result result = new Result("Josef",10,true,"100m butterfly", 110999); 
         ResultMapper rm = new ResultMapper(); 
-        Result result2 = new Result("Josef",20,true,"200m butterfly"); 
+        Result result2 = new Result("Josef",20,true,"200m butterfly",112020); 
         rm.insertResultToSQL(result);
         rm.insertResultToSQL(result2);
+        rm.showResultsFromSQL();
+        rm.showResultForMember(member);
     }
 }

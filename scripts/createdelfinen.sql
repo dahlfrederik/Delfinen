@@ -15,7 +15,7 @@ DROP TABLE if exists results;
 
 create table results ( 
     name 		varchar(30)	references members,
-    date		date,
+    date		integer,
     comp		boolean,
     disc		varchar(30), 
     result 		integer);  

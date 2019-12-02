@@ -84,7 +84,7 @@ public class MemberMapper {
      public Member searchSpecificMember(int memberId) {
         Member member = null;
         try {
-            Connection con = DatabaseConnector.getConnection();
+            con = DatabaseConnector.getConnection();
             String SQL = "SELECT * FROM delfinen.members WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, memberId);

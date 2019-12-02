@@ -18,8 +18,6 @@ public class Member {
         this.active = active;
     }
 
-    
-    
     public Member(int id, String name, int nr, int age, String team, boolean paystatus, boolean active) {
         this.id = id; 
         this.age = age;
