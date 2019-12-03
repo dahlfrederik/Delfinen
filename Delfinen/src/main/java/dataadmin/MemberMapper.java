@@ -123,7 +123,6 @@ public class MemberMapper {
                 Member member = new Member(id,name,nr,age,team,active,paystatus);
                 notPaidList.add(member);
             }
-            System.out.println(notPaidList);
         } catch (SQLException ex) {
             System.out.println("Fejl, medlemmer i restance blev ikke tilføjet");
         }
