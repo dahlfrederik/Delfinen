@@ -70,7 +70,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result for: " + name + ", time: " + time + ", disciplin: "+ disciplin +"\n";
+        return "\n" + name + ", time: " + time + ", disciplin: "+ disciplin +"\n";
     }
 
     
