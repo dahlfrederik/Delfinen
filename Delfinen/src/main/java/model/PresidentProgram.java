@@ -26,9 +26,10 @@ public class PresidentProgram {
         ui.println("1) Opret medlem");
         ui.println("2) Find medlem");
         ui.println("3) Slet medlem");
+         ui.println("4) Afslut");
         try {
             choice = Integer.parseInt(ui.getInput());
-            if (choice < 1 || choice > 3) {
+            if (choice < 1 || choice > 4) {
                 throw new NumberFormatException();
             }
             switch (choice) {
@@ -41,7 +42,10 @@ public class PresidentProgram {
                 case 3: 
                     deleteMember(); 
                     break; 
+                case 4: 
+                    return; 
             }
+            presidentUI(); 
         } catch (NumberFormatException e){
         }
     }

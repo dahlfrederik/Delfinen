@@ -11,7 +11,4 @@ public interface Results {
     public Result chooseMember(Member member); 
     
     public void insertResult(Result result); 
-    
-    public void showTop5(); 
-    
 }

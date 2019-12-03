@@ -26,8 +26,6 @@ public class TrainingTime implements Results {
         rm.insertResultToSQL(result);
     }
 
-    @Override
-    public void showTop5() {
-    }
+  
 
 }

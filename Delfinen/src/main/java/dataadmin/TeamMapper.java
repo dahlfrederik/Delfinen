@@ -1,5 +1,3 @@
-
-
 package dataadmin;
 
 import java.sql.Connection;
@@ -14,11 +12,12 @@ import model.Member;
  * @author FrederikDahl
  */
 public class TeamMapper {
+
     private Connection con = DatabaseConnector.getConnection();
-       private Statement stmt;
-    
-     //TODO HUSK AT SØRGE FOR AT FORMAND SKAL VÆLGE FRA EN LISTE SPECIFIKT. 
-     public ArrayList<Member> getJunior() {
+    private Statement stmt;
+
+    //TODO HUSK AT SØRGE FOR AT FORMAND SKAL VÆLGE FRA EN LISTE SPECIFIKT. 
+    public ArrayList<Member> getJunior() {
         ArrayList<Member> juniorList = new ArrayList();
         try {
             stmt = con.createStatement();
@@ -27,12 +26,12 @@ public class TeamMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                int nr = rs.getInt("phonenr"); 
-                int age = rs.getInt("age"); 
-                String team = rs.getString("team"); 
-                boolean active = rs.getBoolean("active"); 
-                boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,nr,age,team,active,paystatus);
+                int nr = rs.getInt("phonenr");
+                int age = rs.getInt("age");
+                String team = rs.getString("team");
+                boolean active = rs.getBoolean("active");
+                boolean paystatus = rs.getBoolean("paystatus");
+                Member member = new Member(id, name, nr, age, team, active, paystatus);
                 juniorList.add(member);
             }
             System.out.println(juniorList);
@@ -41,8 +40,8 @@ public class TeamMapper {
         }
         return juniorList;
     }
-    
-     public ArrayList<Member> getSenior() {
+
+    public ArrayList<Member> getSenior() {
         ArrayList<Member> seniorList = new ArrayList();
         try {
             stmt = con.createStatement();
@@ -51,12 +50,12 @@ public class TeamMapper {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                int nr = rs.getInt("phonenr"); 
-                int age = rs.getInt("age"); 
-                String team = rs.getString("team"); 
-                boolean active = rs.getBoolean("active"); 
-                boolean paystatus = rs.getBoolean("paystatus"); 
-                Member member = new Member(id,name,nr,age,team,active,paystatus);
+                int nr = rs.getInt("phonenr");
+                int age = rs.getInt("age");
+                String team = rs.getString("team");
+                boolean active = rs.getBoolean("active");
+                boolean paystatus = rs.getBoolean("paystatus");
+                Member member = new Member(id, name, nr, age, team, active, paystatus);
                 seniorList.add(member);
             }
             System.out.println(seniorList);
@@ -65,6 +64,5 @@ public class TeamMapper {
         }
         return seniorList;
     }
-     
-    
+
 }

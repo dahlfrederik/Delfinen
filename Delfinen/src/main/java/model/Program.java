@@ -63,7 +63,7 @@ public class Program {
                     break;
                 case 3:
                     job = "Træner";
-                    coachUI();
+                    CoachProgram cprogram = new CoachProgram(ui,memberMapper); 
                     break;
             }
         } catch (NumberFormatException e) {
@@ -71,12 +71,4 @@ public class Program {
             login();
         }
     }
-
-    
-
-    private void coachUI() {
-    }
-
-    
-    
 }
