@@ -7,7 +7,7 @@ import ui.ConsoleUI;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 class CoachProgram {
 
@@ -92,10 +92,10 @@ class CoachProgram {
         int date = ui.getIntInput();
         Result result = new Result(name, time, comp, disc, date);
         if (comp == true) {
-            Results results = new CompetitionTime();
+            ResultTime results = new CompetitionTime();
             results.insertResult(result);
         } else {
-            Results results = new TrainingTime();
+            ResultTime results = new TrainingTime();
             results.insertResult(result);
         }
     }

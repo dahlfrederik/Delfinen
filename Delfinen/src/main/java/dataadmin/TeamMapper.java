@@ -9,14 +9,14 @@ import model.Member;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class TeamMapper {
 
     private Connection con = DatabaseConnector.getConnection();
     private Statement stmt;
 
-    //TODO HUSK AT SØRGE FOR AT FORMAND SKAL VÆLGE FRA EN LISTE SPECIFIKT. 
+   
     public ArrayList<Member> getJunior() {
         ArrayList<Member> juniorList = new ArrayList();
         try {

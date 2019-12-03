@@ -1,14 +1,12 @@
-
-
 package model;
 
 import dataadmin.ResultMapper;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
-public class CompetitionTime implements Results{
+public class CompetitionTime implements ResultTime{
     ResultMapper rm = new ResultMapper();
 
     @Override

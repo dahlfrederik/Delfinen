@@ -6,7 +6,7 @@ import ui.ConsoleUI;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class AccountantProgram {
 

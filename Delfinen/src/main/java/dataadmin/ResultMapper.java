@@ -1,5 +1,3 @@
-
-
 package dataadmin;
 
 import java.sql.Connection;
@@ -13,13 +11,13 @@ import model.Result;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class ResultMapper {
     private Connection con = DatabaseConnector.getConnection();
     private Statement stmt;
     
-    //antager han indtaster imens de svømmer
+
     public void insertResultToSQL(Result result){
         try {
             String SQL = "INSERT INTO results (name, date, comp, disc, result) VALUES (?, ?, ?, ?, ?)";
@@ -160,24 +158,5 @@ public class ResultMapper {
             System.out.println("Fejl, resultater blev ikke tilføjet til listen");
         }
         return resultList;
-    }
-
-        
-    public static void main(String[] args) {
-        Member member = new Member("Josef", 1021232, 12, "Senior", false, false);
-        Result result = new Result("Josef",10,true,"butterfly", 110999); 
-        ResultMapper rm = new ResultMapper(); 
-        Result result2 = new Result("Thor",24,false,"butterfly",112020); 
-        Result result4 = new Result("Jos",35,false,"butterfly", 110999); 
-        Result result5 = new Result("Halu",88,false,"butterfly", 110999); 
-        Result result6 = new Result("Snuske",10,true,"butterfly", 110999); 
-        rm.insertResultToSQL(result);
-        rm.insertResultToSQL(result2);
-        rm.insertResultToSQL(result4);
-        rm.insertResultToSQL(result5);
-        rm.insertResultToSQL(result6);
-        
-        rm.showTop5Training("butterfly");
-        
-    }
-}
+    }       
+ }

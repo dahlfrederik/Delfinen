@@ -1,5 +1,3 @@
-
-
 package model;
 
 import dataadmin.MemberMapper;
@@ -7,7 +5,7 @@ import ui.ConsoleUI;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class PresidentProgram {
     private final ConsoleUI ui;

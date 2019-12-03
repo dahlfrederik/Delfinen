@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class ConsoleUI {
     Scanner input = new Scanner(System.in);

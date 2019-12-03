@@ -2,7 +2,7 @@ package model;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class Member {
     private int id, age, nr; 

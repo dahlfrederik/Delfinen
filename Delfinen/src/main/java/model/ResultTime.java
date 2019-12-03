@@ -2,9 +2,9 @@ package model;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
-public interface Results {
+public interface ResultTime {
     
     public void showResults(Result result);
     

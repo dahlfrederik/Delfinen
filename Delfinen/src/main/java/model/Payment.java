@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class Payment {
     private final double DISCOUNT = 0.75;  

@@ -1,12 +1,7 @@
-
-
 package model;
-
-import java.time.LocalTime;
-
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class Result {
     private String name, disciplin;

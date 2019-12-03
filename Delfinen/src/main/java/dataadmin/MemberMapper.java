@@ -1,5 +1,3 @@
-
-
 package dataadmin;
 
 import java.sql.Connection;
