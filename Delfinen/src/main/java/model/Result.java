@@ -6,10 +6,10 @@ package model;
 public class Result {
     private String name, disciplin;
     private boolean competition;
-    private int time; 
+    private double time; 
     private int date; 
     
-    public Result(String name, int time, Boolean competition, String disciplin, int date){
+    public Result(String name, double time, Boolean competition, String disciplin, int date){
         this.name = name;
         this.time = time;
         this.competition = competition; 
@@ -17,7 +17,7 @@ public class Result {
         this.date = date; 
     }
 
-    public Result(String name, int time, String disc) {
+    public Result(String name, double time, String disc) {
         this.name = name;
         this.time = time;
         this.disciplin = disc; 
@@ -55,11 +55,11 @@ public class Result {
         this.name = name;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
@@ -68,7 +68,6 @@ public class Result {
         return "\n" + name + ", time: " + time + ", disciplin: "+ disciplin +"\n";
     }
 
-    
     
     
 }

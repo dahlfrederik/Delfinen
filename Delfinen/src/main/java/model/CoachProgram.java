@@ -83,7 +83,7 @@ class CoachProgram {
         System.out.println("Indtast medlem navn");
         String name = ui.getInput();
         System.out.println("Indtast medlemmets tid");
-        int time = ui.getIntInput();
+        double time = ui.getDoubleInput();
         System.out.println("Indtast comp");
         boolean comp = ui.getBoolInput();
         System.out.println("Indtast disciplin");

@@ -22,6 +22,10 @@ public class ConsoleUI {
     public int getIntInput(){
         return input.nextInt(); 
     }
+    
+    public double getDoubleInput(){
+        return input.nextDouble();
+    }
 
     public Boolean getBoolInput() {
         return input.nextBoolean(); 

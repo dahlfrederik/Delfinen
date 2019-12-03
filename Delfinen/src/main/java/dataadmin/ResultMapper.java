@@ -27,7 +27,7 @@ public class ResultMapper {
             ps.setInt(2,result.getDate()); 
             ps.setBoolean(3, result.isCompetition());
             ps.setString(4,result.getDisciplin()); 
-            ps.setInt(5,result.getTime()); 
+            ps.setDouble(5,result.getTime()); 
             
             ps.executeUpdate();
                         
@@ -47,7 +47,7 @@ public class ResultMapper {
                 int date = rs.getInt("date");
                 Boolean comp = rs.getBoolean("comp"); 
                 String disc = rs.getString("disc"); 
-                int time = rs.getInt("result");
+                double time = rs.getInt("result");
                 
                 Result result = new Result(name,time,comp,disc, date); 
                 resultList.add(result);
@@ -71,7 +71,7 @@ public class ResultMapper {
                 int date = rs.getInt("date");
                 Boolean comp = rs.getBoolean("comp"); 
                 String disc = rs.getString("disc"); 
-                int time = rs.getInt("result");
+                double time = rs.getInt("result");
                 
                 Result result = new Result(name,time,comp,disc, date); 
                 resultList.add(result);
@@ -95,7 +95,7 @@ public class ResultMapper {
 
             if (rs.next()) {
                 String name = rs.getString("name");
-                int time = rs.getInt("result");
+                double time = rs.getInt("result");
                 boolean comp = rs.getBoolean("comp");
                 String disc = rs.getString("disc");
                 int date = rs.getInt("date");
@@ -121,7 +121,7 @@ public class ResultMapper {
             while (rs.next()) {
                 String name = rs.getString("TOP5");
                 String disc = rs.getString("disc"); 
-                int time = rs.getInt("TID");
+                double time = rs.getInt("TID");
                 
                 Result result = new Result(name,time,disc); 
                 resultList.add(result);
@@ -147,7 +147,7 @@ public class ResultMapper {
             while (rs.next()) {
                 String name = rs.getString("TOP5");
                 String disc = rs.getString("disc"); 
-                int time = rs.getInt("TID");
+                double time = rs.getInt("TID");
                 
                 Result result = new Result(name,time,disc); 
                 resultList.add(result);
