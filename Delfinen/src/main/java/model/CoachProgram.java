@@ -115,7 +115,32 @@ class CoachProgram {
     }
 
     private void showTop5() {
-        ui.println("Vis top 5 resultater"); 
+        int choice = 0;
+        
+        ResultMapper rm = new ResultMapper();
+        ui.println("Top 5 for træning eller comp?");
+        ui.println("1) Træning");
+        ui.println("2) Competetion");
+        try {
+            choice = Integer.parseInt(ui.getInput());
+            if (choice < 1 || choice > 2) {
+                throw new NumberFormatException();
+            }
+            switch (choice) {
+                case 1:
+                    ui.println("Indtast disciplin: ");
+                    String disc = ui.getInput();
+                    rm.showTop5Training(disc);
+                    break;
+                case 2:
+                    ui.println("Indtast disciplin: ");
+                    String disc1 = ui.getInput();
+                    rm.showTop5Comp(disc1);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+        }
+        
     }
 
 }
