@@ -47,7 +47,7 @@ public class ResultMapper {
                 int date = rs.getInt("date");
                 Boolean comp = rs.getBoolean("comp"); 
                 String disc = rs.getString("disc"); 
-                double time = rs.getInt("result");
+                double time = rs.getDouble("result");
                 
                 Result result = new Result(name,time,comp,disc, date); 
                 resultList.add(result);
@@ -71,7 +71,7 @@ public class ResultMapper {
                 int date = rs.getInt("date");
                 Boolean comp = rs.getBoolean("comp"); 
                 String disc = rs.getString("disc"); 
-                double time = rs.getInt("result");
+                double time = rs.getDouble("result");
                 
                 Result result = new Result(name,time,comp,disc, date); 
                 resultList.add(result);
@@ -95,7 +95,7 @@ public class ResultMapper {
 
             if (rs.next()) {
                 String name = rs.getString("name");
-                double time = rs.getInt("result");
+                double time = rs.getDouble("result");
                 boolean comp = rs.getBoolean("comp");
                 String disc = rs.getString("disc");
                 int date = rs.getInt("date");
@@ -121,7 +121,7 @@ public class ResultMapper {
             while (rs.next()) {
                 String name = rs.getString("TOP5");
                 String disc = rs.getString("disc"); 
-                double time = rs.getInt("TID");
+                double time = rs.getDouble("TID");
                 
                 Result result = new Result(name,time,disc); 
                 resultList.add(result);
@@ -147,7 +147,7 @@ public class ResultMapper {
             while (rs.next()) {
                 String name = rs.getString("TOP5");
                 String disc = rs.getString("disc"); 
-                double time = rs.getInt("TID");
+                double time = rs.getDouble("TID");
                 
                 Result result = new Result(name,time,disc); 
                 resultList.add(result);
