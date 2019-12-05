@@ -80,4 +80,10 @@ public class Member {
     public String toString() {
         return "\nMemberId: " + id + "\nName: " + name +  "\nAge: " + age +"\nTeam: " + team + "\nPaystatus: " + paystatus + "\nActive: " + active + "\n";
     }
+    
+    public String printId(){
+        return "Medlem id: " + id + "\nNavn: " + name;
+    }
+    
+    
 }
