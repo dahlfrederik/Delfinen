@@ -1,7 +1,6 @@
 package model;
 
 import dataadmin.MemberMapper;
-import java.util.InputMismatchException;
 import ui.ConsoleUI;
 
 /**
