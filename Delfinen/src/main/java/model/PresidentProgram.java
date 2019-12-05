@@ -67,6 +67,7 @@ public class PresidentProgram {
     }
     
     private void findMember() {
+        memberMapper.getMembersInfo();
         System.out.println("Indtast id på det medlem du søger efter");
         int id = ui.getIntInput(); 
         Member member = memberMapper.searchSpecificMember(id); 
@@ -75,6 +76,7 @@ public class PresidentProgram {
     }
 
     private void deleteMember() {
+        memberMapper.getMembersInfo();
         System.out.println("Indtast id på det medlem du vil slette");
         int id = ui.getIntInput(); 
         memberMapper.deleteMember(id);

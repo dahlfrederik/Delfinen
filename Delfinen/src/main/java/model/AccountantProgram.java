@@ -46,6 +46,7 @@ public class AccountantProgram {
     }
 
     private Member getMember() {
+        memberMapper.getMembersInfo();
         ui.println("For at vise betalingstatus for et medlem skal der indtastets et medlems ID");
         int id = ui.getIntInput();
         Member member = memberMapper.searchSpecificMember(id);
