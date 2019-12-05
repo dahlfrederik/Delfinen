@@ -24,7 +24,8 @@ public class CompetitionTime implements ResultTime{
         rm.insertResultToSQL(result);
     }
 
-    
+ 
+ 
     
 
 }

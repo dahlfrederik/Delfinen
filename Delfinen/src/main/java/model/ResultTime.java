@@ -11,4 +11,5 @@ public interface ResultTime {
     public Result chooseMember(Member member); 
     
     public void insertResult(Result result); 
+    
 }

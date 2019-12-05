@@ -1,5 +1,6 @@
 package model;
 
+import java.util.InputMismatchException;
 import ui.ConsoleUI;
 
 /**
@@ -33,12 +34,6 @@ public class InputValidator {
 
     public boolean validateTeam(String userInput){
         if(userInput.equals("Senior") || userInput.equals("Junior" )){
-            return true; 
-        } return false; 
-    }
-    
-    public boolean validateBoolean(Boolean userInput){
-         if(userInput.equals(true) || userInput.equals(true)){
             return true; 
         } return false; 
     }

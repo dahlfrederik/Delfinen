@@ -1,6 +1,7 @@
 package model;
 
 import dataadmin.MemberMapper;
+import java.util.InputMismatchException;
 import ui.ConsoleUI;
 
 /**
@@ -73,31 +74,15 @@ public class PresidentProgram {
             System.out.println("Indtast alder");
             age = ui.getIntInput(); 
         }
+        String team = pickTeam();
         
-        System.out.println("Indtast hold: Senior eller Junior");
-        String team = ui.getInput();
-        while(!inputValidator.validateTeam(team)){
-            System.out.println("Hov, der er 2 muligheder");
-            System.out.println("Senior eller Junior");
-            System.out.println("Indtast enten Senior eller Junior");
-            team = ui.getInput(); 
-        }
+        System.out.println("Betalingsstatus: ");
+        System.out.println("Er medlem i restance?");
+        Boolean payStatus = boolStatus();
         
-        System.out.println("Indtast betalingsstatus: true = betalt, false = ikke betalt");
-        Boolean payStatus = ui.getBoolInput();
-        while(!inputValidator.validateBoolean(payStatus)){
-            System.out.println("Hov, indtast venligst betalingstatus");
-            System.out.println("true = betalt, false = ikke betalt");
-            payStatus = ui.getBoolInput(); 
-        }
-        
-        System.out.println("Indtast medlemsstatus: true = aktiv, false =  inaktiv");
-        Boolean status = ui.getBoolInput();
-        while(!inputValidator.validateBoolean(status)){
-            System.out.println("Hov, indtast venligst medlemsstatus");
-            System.out.println("true = aktiv, false =  inaktiv");
-            status = ui.getBoolInput(); 
-        }
+        System.out.println("Indtast medlemsstatus: ");
+        System.out.println("Er medlem aktivt?");
+        boolean status = boolStatus(); 
         
         Member member = new Member(name, nr, age, team, payStatus, status);
         memberMapper.insertMember(member);
@@ -119,4 +104,55 @@ public class PresidentProgram {
         memberMapper.deleteMember(id);
         System.out.println("Medlemmet med id: " + id + " er blevet slettet");
     }
+    
+    private boolean boolStatus(){
+           try{
+        int choice = 0;
+        ui.println("Ja eller nej");
+        choice = Integer.parseInt(ui.getInput());
+        if (choice < 1 || choice > 2) {
+            throw new NumberFormatException();
+        }
+        switch (choice) {
+            case 1:
+                ui.println("Ja");
+                return true;
+            case 2:
+                ui.println("Nej");
+                return false;
+        }
+        }
+        catch (NumberFormatException e){
+            System.out.println("Hov, prøv igen");
+            boolStatus(); 
+        }
+        return false;
+    }
+    
+    private String pickTeam() {
+        int choice = 0;
+        ui.println("Vælg hold: \n 1: Senior \n 2: Junior ");
+
+        try {
+            choice = Integer.parseInt(ui.getInput());
+            if (choice < 1 || choice > 2) {
+                throw new NumberFormatException();
+            }
+            switch (choice) {
+                case 1:
+                    ui.println("Senior");
+                    return "Senior";
+
+                case 2:
+                    ui.println("Junior");
+                    return "Junior";
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Hov, prøv igen");
+            pickTeam(); 
+        }
+        return "";
+
+    }
 }
+

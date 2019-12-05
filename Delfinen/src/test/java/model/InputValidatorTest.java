@@ -90,17 +90,16 @@ public class InputValidatorTest {
         String userInput = "junior";
         assertFalse(iv.validateTeam(userInput));
     }
-    
+
     @Test
-    public void testValidateBooleanFalse(){
-        Boolean userInput = false; 
-        assertFalse(iv.validateBoolean(userInput));
+    public void testValidateResultTimeTrue(){
+        double userInput = 10.0; 
+        assertTrue(iv.validateResultTime(userInput)); 
     }
     
-    @Test
-    public void testValidateBooleanTrue(){
-        Boolean userInput = true; 
-        assertTrue(iv.validateBoolean(userInput));
+      @Test
+    public void testValidateResultTimeFalse(){
+        double userInput = 105.0; 
+        assertFalse(iv.validateResultTime(userInput)); 
     }
-    
 }

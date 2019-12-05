@@ -78,7 +78,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "\nMemberId: " + id + "\nName: " + name +  "\nAge: " + age +"\nTeam: " + team + "\nPaystatus: " + paystatus + "\nActive: " + active + "\n";
+        return "\n MedlemsID: " + id + "\nNavn: " + name +  "\nAlder: " + age +"\nHold: " + team + "\nBetalingsStatus: " + paystatus + "\nAktiv: " + active + "\n";
     }
     
     public String printId(){

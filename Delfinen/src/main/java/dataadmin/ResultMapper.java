@@ -159,4 +159,29 @@ public class ResultMapper {
         }
         return resultList;
     }       
+    
+    public  ArrayList<Result> showTop5All(String disciplin) {
+        ArrayList<Result> resultList = new ArrayList();
+        try {
+            stmt = con.createStatement();
+            String SQL = "SELECT name AS TOP5, disc,result AS TID FROM delfinen.results WHERE disc = ? ORDER BY result ASC LIMIT 5";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, disciplin);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                String name = rs.getString("TOP5");
+                String disc = rs.getString("disc"); 
+                double time = rs.getDouble("TID");
+                
+                Result result = new Result(name,time,disc); 
+                resultList.add(result);
+            }
+            System.out.println("SHOW TOP5 FROM TRAINING");
+            System.out.println(resultList);
+        } catch (SQLException ex) {
+            System.out.println("Fejl, resultater blev ikke tilføjet til listen");
+        }
+        return resultList;
+    }       
  }

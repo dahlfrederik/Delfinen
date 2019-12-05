@@ -65,7 +65,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "\n" + name + ", time: " + time + ", disciplin: "+ disciplin +"\n";
+        return "\n" + name + ", tid: " + time + ", disciplin: "+ disciplin +"\n";
     }
 
     

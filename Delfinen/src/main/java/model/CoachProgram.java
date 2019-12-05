@@ -13,7 +13,7 @@ class CoachProgram {
 
     private final MemberMapper memberMapper;
     private ConsoleUI ui;
-    private InputValidator inputValidator = new InputValidator(); 
+    private InputValidator inputValidator = new InputValidator();
 
     public CoachProgram(ConsoleUI ui, MemberMapper memberMapper) {
         this.ui = ui;
@@ -47,10 +47,10 @@ class CoachProgram {
                 case 4:
                     showTop5();
                     break;
-                case 5: 
-                    return; 
+                case 5:
+                    return;
             }
-            coachUI(); 
+            coachUI();
         } catch (NumberFormatException e) {
         }
     }
@@ -83,29 +83,22 @@ class CoachProgram {
     private void insertResults() {
         System.out.println("Indtast medlem navn");
         String name = ui.getInput();
-        while(!inputValidator.validateString(name)){
+        while (!inputValidator.validateString(name)) {
             System.out.println("Hov, det var ikke et navn. Prøv igen!");
             System.out.println("Indtast medlem navn");
-            name = ui.getInput(); 
+            name = ui.getInput();
         }
-        
+
         System.out.println("Indtast medlemmets tid");
         double time = ui.getDoubleInput();
-        while(!inputValidator.validateResultTime(time)){
+        while (!inputValidator.validateResultTime(time)) {
             System.out.println("Hov, indtast en tid under 100 minutter");
             System.out.println("Indtast medlemmets tid");
-            time = ui.getDoubleInput(); 
+            time = ui.getDoubleInput();
         }
-        
-        System.out.println("Indtast comp");
-        boolean comp = ui.getBoolInput();
-        while(!inputValidator.validateBoolean(comp)){
-            System.out.println("Hov");
-        }
-        
-        System.out.println("Indtast disciplin");
-        String disc = ui.getInput();
-        
+        boolean comp = isItComp();
+        String disc = pickDisc();
+
         System.out.println("Indtast dato");
         int date = ui.getIntInput();
         Result result = new Result(name, time, comp, disc, date);
@@ -119,10 +112,10 @@ class CoachProgram {
     }
 
     private void showResults() {
-        ResultMapper rm = new ResultMapper(); 
-        Member member = getMember(); 
+        ResultMapper rm = new ResultMapper();
+        Member member = getMember();
         ui.println("Medlemmets resultater er: ");
-        rm.showResultForMember(member); 
+        rm.showResultForMember(member);
     }
 
     private Member getMember() {
@@ -135,7 +128,7 @@ class CoachProgram {
 
     private void showTop5() {
         int choice = 0;
-        
+
         ResultMapper rm = new ResultMapper();
         ui.println("Top 5 for træning eller comp?");
         ui.println("1) Træning");
@@ -147,51 +140,80 @@ class CoachProgram {
             }
             switch (choice) {
                 case 1:
-                    ui.println("Indtast disciplin: ");
+                    ui.println("Indtast disciplin som du vil se top 5 for træning i: ");
                     String disc = pickDisc();
                     rm.showTop5Training(disc);
                     break;
                 case 2:
-                    ui.println("Indtast disciplin: ");
+                    ui.println("Indtast disciplin som du vil se top 5 for konkurrence i");
                     String disc1 = pickDisc();
                     rm.showTop5Comp(disc1);
                     break;
+                case 3: 
+                    ui.println("Indtast dicsiplin som du vil se top 5 for både træning og konkurrence samlet"); 
+                    String disc2 = pickDisc(); 
+                    rm.showTop5All(disc2); 
             }
         } catch (NumberFormatException e) {
         }
-        
+
     }
-    
-    private String pickDisc(){
+
+    private String pickDisc() {
         int choice = 0;
         ui.println("Vælg disciplin: \n 1: Butterfly \n 2: Crawl \n 3: Rygcrawl \n 4: Brystsvømmning");
-        
+
         try {
             choice = Integer.parseInt(ui.getInput());
-            if(choice < 1 || choice > 4){
+            if (choice < 1 || choice > 4) {
                 throw new NumberFormatException();
             }
             switch (choice) {
-            case 1:
-            ui.println("Butterfly");
-            return "Butterfly";
-            
-            case 2:
-                ui.println("Crawl");
-                return "Crawl";
-            case 3:
-                ui.println("Rygcrawl");
-                return "Rygcrawl";
-            case 4:
-                ui.println("Brystsvømning");
-                return "Brystsvømning";
-            
-        }
+                case 1:
+                    ui.println("Butterfly");
+                    return "Butterfly";
+
+                case 2:
+                    ui.println("Crawl");
+                    return "Crawl";
+                case 3:
+                    ui.println("Rygcrawl");
+                    return "Rygcrawl";
+                case 4:
+                    ui.println("Brystsvømning");
+                    return "Brystsvømning";
+
+            }
         } catch (NumberFormatException e) {
+             System.out.println("Hov, prøv igen");
+             pickDisc(); 
         }
         return "";
-        
-    }
-    
 
+    }
+
+    private boolean isItComp() {
+        try{
+        int choice = 0;
+        ui.println("Er tiden fra konkurrence? Ja eller nej");
+        choice = Integer.parseInt(ui.getInput());
+        if (choice < 1 || choice > 2) {
+            throw new NumberFormatException();
+        }
+        switch (choice) {
+            case 1:
+                ui.println("Ja");
+                return true;
+            case 2:
+                ui.println("Nej");
+                return false;
+        }
+        }
+        catch (NumberFormatException e){
+             System.out.println("Hov, prøv igen");
+             isItComp(); 
+        }
+        return false;
+    
+    }
 }
