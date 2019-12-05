@@ -128,4 +128,31 @@ public class MemberMapper {
          
          return notPaidList; 
      }
+
+public ArrayList<Member> getMembersInfo() {
+        ArrayList<Member> memberList = new ArrayList();
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM delfinen.members");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int nr = rs.getInt("phonenr"); 
+                int age = rs.getInt("age"); 
+                String team = rs.getString("team"); 
+                boolean active = rs.getBoolean("active"); 
+                boolean paystatus = rs.getBoolean("paystatus"); 
+                Member member = new Member(id,name,nr,age,team,active,paystatus);
+                memberList.add(member);
+            }
+            for (Member member : memberList) {
+                System.out.println(member.printId());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fejl, medlem blev ikke fundet");
+        }
+        return memberList;
+    }
+
 }

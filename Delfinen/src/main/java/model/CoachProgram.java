@@ -108,6 +108,7 @@ class CoachProgram {
     }
 
     private Member getMember() {
+        memberMapper.getMembersInfo();
         ui.println("For at vise finde medlemsresultater skal der indtastets et medlems ID");
         int id = ui.getIntInput();
         Member member = memberMapper.searchSpecificMember(id);
@@ -129,12 +130,12 @@ class CoachProgram {
             switch (choice) {
                 case 1:
                     ui.println("Indtast disciplin: ");
-                    String disc = ui.getInput();
+                    String disc = pickDisc();
                     rm.showTop5Training(disc);
                     break;
                 case 2:
                     ui.println("Indtast disciplin: ");
-                    String disc1 = ui.getInput();
+                    String disc1 = pickDisc();
                     rm.showTop5Comp(disc1);
                     break;
             }
@@ -142,5 +143,37 @@ class CoachProgram {
         }
         
     }
+    
+    private String pickDisc(){
+        int choice = 0;
+        ui.println("Vælg disciplin: \n 1: Butterfly \n 2: Crawl \n 3: Rygcrawl \n 4: Brystsvømmning");
+        
+        try {
+            choice = Integer.parseInt(ui.getInput());
+            if(choice < 1 || choice > 4){
+                throw new NumberFormatException();
+            }
+            switch (choice) {
+            case 1:
+            ui.println("Butterfly");
+            return "Butterfly";
+            
+            case 2:
+                ui.println("Crawl");
+                return "Crawl";
+            case 3:
+                ui.println("Rygcrawl");
+                return "Rygcrawl";
+            case 4:
+                ui.println("Brystsvømning");
+                return "Brystsvømning";
+            
+        }
+        } catch (NumberFormatException e) {
+        }
+        return "";
+        
+    }
+    
 
 }
