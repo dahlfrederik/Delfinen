@@ -93,20 +93,14 @@ public class InputValidatorTest {
     
     @Test
     public void testValidateBooleanFalse(){
-        String userInput = "false"; 
-        assertTrue(iv.validateBoolean(userInput));
+        Boolean userInput = false; 
+        assertFalse(iv.validateBoolean(userInput));
     }
     
     @Test
     public void testValidateBooleanTrue(){
-        String userInput = "true"; 
+        Boolean userInput = true; 
         assertTrue(iv.validateBoolean(userInput));
     }
     
-    @Test
-    public void testValidateBooleanWrong(){
-        String userInput = "yo"; 
-        assertFalse(iv.validateBoolean(userInput));
-    }
-
 }

@@ -85,7 +85,7 @@ public class PresidentProgram {
         
         System.out.println("Indtast betalingsstatus: true = betalt, false = ikke betalt");
         Boolean payStatus = ui.getBoolInput();
-        while(!inputValidator.validateBoolean(team)){
+        while(!inputValidator.validateBoolean(payStatus)){
             System.out.println("Hov, indtast venligst betalingstatus");
             System.out.println("true = betalt, false = ikke betalt");
             payStatus = ui.getBoolInput(); 
@@ -93,7 +93,7 @@ public class PresidentProgram {
         
         System.out.println("Indtast medlemsstatus: true = aktiv, false =  inaktiv");
         Boolean status = ui.getBoolInput();
-        while(!inputValidator.validateBoolean(team)){
+        while(!inputValidator.validateBoolean(status)){
             System.out.println("Hov, indtast venligst medlemsstatus");
             System.out.println("true = aktiv, false =  inaktiv");
             status = ui.getBoolInput(); 

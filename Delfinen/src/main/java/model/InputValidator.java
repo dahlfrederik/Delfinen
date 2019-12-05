@@ -37,15 +37,19 @@ public class InputValidator {
         } return false; 
     }
     
-    public boolean validateBoolean(String userInput){
-         if(userInput.equals("false") || userInput.equals("true" )){
+    public boolean validateBoolean(Boolean userInput){
+         if(userInput.equals(true) || userInput.equals(true)){
             return true; 
         } return false; 
     }
     
-    
+    //Højest muligt tid er 100min
     public boolean validateResultTime(double userInput) {
-        return true;
+        if(userInput < 100.0){
+            return true; 
+        }
+        return false;
     }
+    
 
 }

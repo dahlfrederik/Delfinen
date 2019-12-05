@@ -13,6 +13,7 @@ class CoachProgram {
 
     private final MemberMapper memberMapper;
     private ConsoleUI ui;
+    private InputValidator inputValidator = new InputValidator(); 
 
     public CoachProgram(ConsoleUI ui, MemberMapper memberMapper) {
         this.ui = ui;
@@ -82,12 +83,29 @@ class CoachProgram {
     private void insertResults() {
         System.out.println("Indtast medlem navn");
         String name = ui.getInput();
+        while(!inputValidator.validateString(name)){
+            System.out.println("Hov, det var ikke et navn. Prøv igen!");
+            System.out.println("Indtast medlem navn");
+            name = ui.getInput(); 
+        }
+        
         System.out.println("Indtast medlemmets tid");
         double time = ui.getDoubleInput();
+        while(!inputValidator.validateResultTime(time)){
+            System.out.println("Hov, indtast en tid under 100 minutter");
+            System.out.println("Indtast medlemmets tid");
+            time = ui.getDoubleInput(); 
+        }
+        
         System.out.println("Indtast comp");
         boolean comp = ui.getBoolInput();
+        while(!inputValidator.validateBoolean(comp)){
+            System.out.println("Hov");
+        }
+        
         System.out.println("Indtast disciplin");
         String disc = ui.getInput();
+        
         System.out.println("Indtast dato");
         int date = ui.getIntInput();
         Result result = new Result(name, time, comp, disc, date);
