@@ -195,7 +195,7 @@ class CoachProgram {
     private boolean isItComp() {
         try{
         int choice = 0;
-        ui.println("Er tiden fra konkurrence? Ja eller nej");
+        ui.println("Er tiden fra konkurrence? 1 for Ja eller 2 for nej");
         choice = Integer.parseInt(ui.getInput());
         if (choice < 1 || choice > 2) {
             throw new NumberFormatException();

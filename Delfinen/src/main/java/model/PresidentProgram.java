@@ -107,7 +107,7 @@ public class PresidentProgram {
     private boolean boolStatus(){
            try{
         int choice = 0;
-        ui.println("Ja eller nej");
+        ui.println("1 for ja eller 2 for nej");
         choice = Integer.parseInt(ui.getInput());
         if (choice < 1 || choice > 2) {
             throw new NumberFormatException();
