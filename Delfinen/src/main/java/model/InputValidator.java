@@ -1,11 +1,8 @@
 package model;
 
-import java.util.InputMismatchException;
-import ui.ConsoleUI;
-
 /**
  *
- * @author FrederikDahl
+ * @author Frederik, Thor, Josef, Hallur
  */
 public class InputValidator {
 
